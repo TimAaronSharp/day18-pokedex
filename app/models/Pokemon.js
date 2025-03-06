@@ -26,9 +26,10 @@ export class Pokemon {
 
   get listHTMLTemplate() {
     return /*html */ `
-      <div class="btn text-start" role="button" onclick="app.wildPokemonController.getActivePokemon('${this.name}')">${this.name}</div>
+      <div class="btn text-start d-block" role="button" onclick="app.wildPokemonController.getActivePokemon('${this.name}')">${this.name}</div>
       `
   }
+
 }
 
 export class FullPokemon extends Pokemon {
@@ -62,13 +63,23 @@ export class FullPokemon extends Pokemon {
   get activeHTMLTemplate() {
 
     return `
+    <div class="active-view bg-light shadow">
     <h2 class="text-capitalize">${this.name}</h2>
     <p class="text-capitalize">Type(s): ${this.getTypes}</p>
     <p>Base Stats: HP: ${this.health} Atk: ${this.attack} Def: ${this.defense} Spd: ${this.speed}</p> 
     <img src="${this.img}" alt="Image of front of pokemon">
     <img src="${this.backImg}" alt="Image of back of pokemon">
+
+    <button onclick="app.sandboxPokemonController.catchPokemon()" class="btn btn-danger">Catch</button>
+    </div>
     `
   }
+  get myListHTMLTemplate() {
+    return /*html */ `
+      <div class="btn text-start d-block" role="button" onclick="app.sandboxPokemonController.makeMyPokemonActive('${this.id}')">${this.name}</div>
+      `
+  }
+
 }
 // this.nickName = data.nickName
 //     this.img = data.img

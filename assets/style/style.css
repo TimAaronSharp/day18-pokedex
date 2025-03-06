@@ -9,3 +9,8 @@
 .profile-picture.profile-picture-sm {
   height: 64px;
 }
+
+.active-view {
+  position: fixed;
+  top: 80px;
+}

@@ -13,43 +13,24 @@ const pokeApi = axios.create({
 class WildPokemonService {
 
   async getWildPokemon() {
-    const response = await pokeApi.get('pokemon')
+    const response = await pokeApi.get('pokemon?limit=151')
     // console.log(response.data);
     console.log(response.data.results);
     const wildPokemon = response.data.results.map(wildPokemonData => new Pokemon(wildPokemonData))
     AppState.wildPokemon = wildPokemon
 
-    // console.log(AppState.wildPokemon);
-
   }
   async getActivePokemon(name) {
     // debugger
     const response = await pokeApi.get(`pokemon/${name}`)
-    // console.log("The active pokemon is ", response.data);
 
     let pokemonTypes = []
-    // console.log(`response.data.types is ${response.data.types[0].type.name}`);
 
-    // response.data.types.forEach(pokemonType => pokemonTypes.push(pokemonType.type.name))
     const activePokemon = new FullPokemon(response.data)
-    // activePokemon.types = pokemonTypes
-    // console.log(pokemonTypes);
 
     AppState.activePokemon = activePokemon
 
     console.log('AppState.activePokemon test ', AppState.activePokemon);
-
-
-    // console.log(`activePokemon in AppState is ${AppState.activePokemon.name}`);
-    // console.log(`weight in AppState is ${AppState.activePokemon.weight}`);
-    // console.log(`height in AppState is ${AppState.activePokemon.height}`);
-    // console.log(`attack in AppState is ${AppState.activePokemon.attack}`);
-    // console.log(`defense in AppState is ${AppState.activePokemon.defense}`);
-    // console.log(`speed in AppState is ${AppState.activePokemon.speed}`);
-    // console.log(`types in AppState is ${AppState.activePokemon.types}`);
-
-
-
   }
 
 }
