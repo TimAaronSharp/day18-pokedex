@@ -25,22 +25,28 @@ class WildPokemonService {
   async getActivePokemon(name) {
     // debugger
     const response = await pokeApi.get(`pokemon/${name}`)
-    console.log("The active pokemon is ", response.data);
+    // console.log("The active pokemon is ", response.data);
 
     let pokemonTypes = []
-    response.data.types.forEach(type => pokemonTypes.push(type.name))
+    // console.log(`response.data.types is ${response.data.types[0].type.name}`);
+
+    // response.data.types.forEach(pokemonType => pokemonTypes.push(pokemonType.type.name))
     const activePokemon = new FullPokemon(response.data)
-    activePokemon.types = pokemonTypes
+    // activePokemon.types = pokemonTypes
+    // console.log(pokemonTypes);
+
     AppState.activePokemon = activePokemon
 
+    console.log('AppState.activePokemon test ', AppState.activePokemon);
 
-    console.log(`activePokemon in AppState is ${AppState.activePokemon.name}`);
-    console.log(`weight in AppState is ${AppState.activePokemon.weight}`);
-    console.log(`height in AppState is ${AppState.activePokemon.height}`);
-    console.log(`attack in AppState is ${AppState.activePokemon.attack}`);
-    console.log(`defense in AppState is ${AppState.activePokemon.defense}`);
-    console.log(`speed in AppState is ${AppState.activePokemon.speed}`);
-    console.log(`types in AppState is ${AppState.activePokemon.types}`);
+
+    // console.log(`activePokemon in AppState is ${AppState.activePokemon.name}`);
+    // console.log(`weight in AppState is ${AppState.activePokemon.weight}`);
+    // console.log(`height in AppState is ${AppState.activePokemon.height}`);
+    // console.log(`attack in AppState is ${AppState.activePokemon.attack}`);
+    // console.log(`defense in AppState is ${AppState.activePokemon.defense}`);
+    // console.log(`speed in AppState is ${AppState.activePokemon.speed}`);
+    // console.log(`types in AppState is ${AppState.activePokemon.types}`);
 
 
 
